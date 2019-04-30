@@ -1,0 +1,23 @@
+#title{
+	font-family: 'Roboto Mono', monospace;
+}
+
+body{
+	background-color:  blue;
+}
+
+li{
+	font-family: arial;
+	align-items: center;
+	text-align: center;
+	padding: 0vw 3vw;
+}
+
+#logout{
+	padding-left: 45vw;
+}
+
+#navbar{
+	width: 100%;
+}
+
