@@ -1,4 +1,4 @@
-$(function(){
+/*$(function(){
 	$.ajax({
 		url : 'http://localhost:3000/characters',
 		type : "GET", 
@@ -8,7 +8,7 @@ $(function(){
 			for(let i = 0; i <data.length; i++){
 				new_html += `
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" id="${data[i]._id}">
-				<a /*href="../characterDetails/characterDetails.html*/">
+				<a href="../characterDetails/characterDetails.html">
                     <img  src="${data[i].profilePhoto}" class="img-fluid " alt="">
                 </a>
                 <h3 class="shname">${data[i].aliases[0]}</h3> 
@@ -18,13 +18,14 @@ $(function(){
 			$("#images").append(new_html);
     	},
     	error: function(data){
-    		//do something
+    		
     	}
 	}).done(function(response){
 		$('.zoom').click(function(event){    
     	var id = event.currentTarget.id;
     	localStorage.setItem("character", id);
-    	window.open("../characterDetails/characterDetails.html?id="+id);
 		});
 	});
 });
+*/
+console.log(localStorage.getItem("character"));
