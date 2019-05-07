@@ -44,3 +44,7 @@ div div div h1{
 	font-family: 'Stencil Std';
 	font-size: 3em;
 }
+
+div div div li{
+	text-align: left;
+}
