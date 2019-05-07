@@ -24,7 +24,20 @@ $(function(){
 		$('.zoom').click(function(event){    
     	var id = event.currentTarget.id;
     	localStorage.setItem("character", id);
-    	window.open("../characterDetails/characterDetails.html?id="+id);
+    	window.location = ("../characterDetails/characterDetails.html?id="+id);
 		});
 	});
 });
+
+window.addEventListener("load", function(event) {
+    if(localStorage.getItem('token') == null){
+		x = document.getElementById("login");
+		x.text = "Log In";
+	}
+	else {
+		x = document.getElementById("login");
+		x.text = 'Log Out';
+	}
+  });
+	
+
