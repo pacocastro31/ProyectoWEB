@@ -8,7 +8,7 @@ $(function(){
 			for(let i = 0; i <data.length; i++){
 				new_html += `
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" id="${data[i]._id}">
-				<a /*href="../characterDetails/characterDetails.html*/">
+				<a>
                     <img  src="${data[i].profilePhoto}" class="img-fluid " alt="">
                 </a>
                 <h3 class="shname">${data[i].aliases[0]}</h3> 
@@ -21,7 +21,9 @@ $(function(){
     		//do something
     	}
 	}).done(function(response){
-		$('.zoom').click(function(event){    
+		$('.zoom').click(function(event){
+		console.log(event);
+		alert("hola");   
     	var id = event.currentTarget.id;
     	localStorage.setItem("character", id);
     	window.location = ("../characterDetails/characterDetails.html?id="+id);
@@ -52,7 +54,6 @@ $("#login").click(function(){
 		//este ya esta listo creo
 		localStorage.removeItem('token');
 		window.location= ("../home/index.html");
-		location.reload();
 	}
 	
 });

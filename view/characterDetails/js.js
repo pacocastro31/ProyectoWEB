@@ -1,9 +1,9 @@
 var url_string = window.location.href
 var url = new URL(url_string);
-var c = url.searchParams.get("id");
+var id = url.searchParams.get("id");
 $(function(){
 	$.ajax({
-		url : 'http://localhost:3000/characters/' + c,
+		url : 'http://localhost:3000/characters/' + id,
 		type : "GET", 
 		dataType : "json",
 		success: function(data){
