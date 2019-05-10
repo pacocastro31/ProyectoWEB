@@ -1,11 +1,12 @@
 input[type="password"]:focus,
-input[type="email"]:focus{   
+input[type="email"]:focus{
   border-color: red;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
 }
 
 body{
-	background-image: url("https://www.cinepremiere.com.mx/wp-content/uploads/2019/03/marvel.jpg");
+	background-image: url("https://cdnb.artstation.com/p/assets/images/images/007/058/671/large/ryan-meinerding-26.jpg?1503370834");
+  /*https://www.cinepremiere.com.mx/wp-content/uploads/2019/03/marvel.jpg*/
 	 background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center;
