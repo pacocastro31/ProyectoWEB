@@ -1,11 +1,9 @@
 window.addEventListener("load", function(event) {
     if(localStorage.getItem('token') == null){
-		x = document.getElementById("login");
-		x.text = "Log In";
+		$("#login").text("Login");
 	}
 	else {
-		x = document.getElementById("login");
-		x.text = 'Log Out';
+		$("#login").text("Log Out");
 	}
   });
 
@@ -13,6 +11,7 @@ $("#login").click(function(){
 	if(localStorage.getItem('token') == null){
 		//se lleva a la pagina log in
 		//hay que borrar esta madre
+		window.localStorage.getItem('token');
 		window.location = ("../login/login.html");
 	}
 	else {

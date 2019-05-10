@@ -1,30 +1,23 @@
-$("#loginBtn").click(function(event){
-	alert("a");
-	if(validateEmail($("#inputEmail").val()) && $("#inputPassword").val() != ""){
-		alert("a");
-		$.ajax({
+
+
+$('#btn').click(function(){
+	var email = document.getElementById("inputEmail");
+	var pass = document.getElementById("inputPassword");
+	$.ajax({
 			type : 'POST',
 			url : 'https://themcuproject.herokuapp.com/users/login',
+			crossDomain: true,
 			contentType:'application/json',
 			data: JSON.stringify({
-						email: $("#inputEmail").val(),
-						password: $("#inputPassword").val()
+						email: email.value,
+						password: pass.value
 					}),
 			success: function(data){
-				localStorage.setItem("token", data.token);
+				window.localStorage.setItem("token", data.token);
 				window.location = ("../home/index.html");
 			},
 			error:function(error){
-				alert("NO SE PUDO INICIAR SESION");
+				alert("NO SE PUDO INICIAR SESION");		
 			}
 		});
-	} else{
-		alert("Email y/o contraseña no son validos");
-	}
-	
 });
-
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
