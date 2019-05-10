@@ -13,33 +13,27 @@ $(function(){
       <div class="col">
         <h1>${data.title}</h1>
         <br>
-        <h2>${data.director}</h2>
+        <h2>Director: ${data.director}</h2>
         <br>
+        <h3>${data.phase}</h3>
+        <h3>Synopsis</h3>
+        <p>${data.synopsis}</p>
+        <br>
+        <h3>Premier</h3>
+        <p>${data.premiere}</p>
+        <br>
+        <h3>Pics</h3>
         <ul>`;
-        for(var i = 0; i < data.powers.length; i++){
-        	new_html+=`<li> ${data.powers[i]}</li>`;
+        for (var i=0; i<data.stills.length; i++){
+            new_html+=`<li> <img src="${data.stills[i]}" class="img-fluid"></li>`;
         }
- 		new_html+=`
-        </ul>
-        <br>`;
-        if(data.status == 'Alive'){
-        	new_html+=`<p id="alive">${data.status}<p>`;
-        } else {
-        	new_html+=`<p id="dead">${data.status}<p>`;
-        }
-        
         new_html+=`
-        <br>
-        <h3>Who is ${data.aliases[0]}?</h3>
-         <p>${data.biography}</p>
-        <br>
-        <p>${data.age} years</p>
-        <br>
-        <p>Creators: ${data.creators}</p>
-        <br>
-        <h3>Actor</h3>
-        <p>${data.actor}</p>
-      	</div>`;
+        </ul>
+        <br>;
+        <h3>Trailer</h3>
+        <iframe class="img-fluid" src="${data.trailer}">
+        </iframe>
+          </div>`;
       	$("#charDet").append(new_html);
       	},
     	error: function(data){
