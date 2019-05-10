@@ -4,7 +4,7 @@ var c = url.searchParams.get("id");
 $(function(){
 	$.ajax({
 		url : 'https://themcuproject.herokuapp.com/movies/' + c,
-		type : "GET", 
+		type : "GET",
 		dataType : "json",
 		success: function(data){
 			var new_html = ` <div class="col" id="img-col">
@@ -29,7 +29,7 @@ $(function(){
         }
         new_html+=`
         </ul>
-        <br>;
+        <br>
         <h3>Trailer</h3>
         <iframe class="img-fluid" src="${data.trailer}">
         </iframe>
@@ -57,10 +57,10 @@ $("#login").click(function(){
         window.location = ("../login/login.html");
     }
     else {
-        //se lleva al home y se borra el token hay que hacer sign in 
+        //se lleva al home y se borra el token hay que hacer sign in
         //este ya esta listo creo
         localStorage.removeItem('token');
         window.location= ("../home/index.html");
     }
-    
+
 });
