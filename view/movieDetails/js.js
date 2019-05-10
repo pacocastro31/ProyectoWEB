@@ -3,7 +3,7 @@ var url = new URL(url_string);
 var c = url.searchParams.get("id");
 $(function(){
 	$.ajax({
-		url : 'http://localhost:3000/movies/' + c,
+		url : 'https://themcuproject.herokuapp.com/movies/' + c,
 		type : "GET", 
 		dataType : "json",
 		success: function(data){
@@ -43,7 +43,6 @@ $(function(){
       	$("#charDet").append(new_html);
       	},
     	error: function(data){
-    		<h1>error</h1>
     	}
 	});
 });
@@ -61,10 +60,7 @@ window.addEventListener("load", function(event) {
 
 $("#login").click(function(){
     if(localStorage.getItem('token') == null){
-        //se lleva a la pagina de sign in
-        alert("sesion iniciada");
-        //hay que borrar esta madre
-        localStorage.setItem('token',"asd");
+        window.location = ("../login/login.html");
     }
     else {
         //se lleva al home y se borra el token hay que hacer sign in 

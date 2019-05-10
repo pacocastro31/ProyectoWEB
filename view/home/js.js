@@ -11,10 +11,9 @@ window.addEventListener("load", function(event) {
 
 $("#login").click(function(){
 	if(localStorage.getItem('token') == null){
-		//se lleva a la pagina de sign in
-		alert("sesion iniciada");
+		//se lleva a la pagina log in
 		//hay que borrar esta madre
-		localStorage.setItem('token',"asd");
+		window.location = ("../login/login.html");
 	}
 	else {
 		//se lleva al home y se borra el token hay que hacer sign in 
