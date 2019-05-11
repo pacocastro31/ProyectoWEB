@@ -10,7 +10,12 @@ $(function(){
 			var new_html = ` <div class="col" id="img-col">
         <img src="${data.profilePhoto}" class="img-fluid">
       </div>
-      <div class="col">
+      <div class="col">`;
+      if(localStorage.getItem('admin') != null){
+        new_html+=`<button type="button" id="btn" class="btn btn-primary">Edit Character</button>`;
+      }
+
+      new_html+=`
         <h1>${data.aliases[1]}</h1>
         <br>
         <h2>${data.name}</h2>
@@ -45,7 +50,12 @@ $(function(){
     	error: function(data){
     		//do something
     	}
-	});
+	}).done(function(resp){
+        $("#btn").click(function(event){
+            var id = event.currentTarget.id;
+            window.location = ("../addCharacter/addCharacters.html?id=" + url.searchParams.get("id"));
+        });
+    });
 });
 
 window.addEventListener("load", function(event) {
@@ -57,6 +67,8 @@ window.addEventListener("load", function(event) {
         x = document.getElementById("login");
         x.text = 'Log Out';
     }
+
+
   });
 
 $("#login").click(function(){
@@ -68,6 +80,7 @@ $("#login").click(function(){
         //se lleva al home y se borra el token hay que hacer sign in 
         //este ya esta listo creo
         localStorage.removeItem('token');
+        localStorage.removeItem('admin');
         window.location= ("../home/index.html");
     }
     

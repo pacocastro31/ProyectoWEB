@@ -18,6 +18,7 @@ $("#login").click(function(){
 		//se lleva al home y se borra el token hay que hacer sign in 
 		//este ya esta listo creo
 		localStorage.removeItem('token');
+		localStorage.removeItem('admin');
 		location.reload();
 	}
 	
