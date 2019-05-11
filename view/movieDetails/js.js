@@ -10,8 +10,11 @@ $(function(){
 			var new_html = ` <div class="col" id="img-col">
         <img src="${data.poster}" class="img-fluid">
       </div>
-      <div class="col">
-        <h1>${data.title}</h1>
+      <div class="col">`;
+			if(localStorage.getItem('admin') != null){
+        new_html+=`<button type="button" id="btn" class="btn btn-primary">Edit Movie</button>`;
+      }
+        new_html += `<h1>${data.title}</h1>
         <br>
         <h2>Director: ${data.director}</h2>
         <br>
@@ -37,7 +40,12 @@ $(function(){
       	},
     	error: function(data){
     	}
-	});
+	}).done(function(resp){
+        $("#btn").click(function(event){
+            var id = event.currentTarget.id;
+            window.location = ("../editMovie/editMovie.html?id=" + url.searchParams.get("id"));
+        });
+    });
 });
 
 window.addEventListener("load", function(event) {
