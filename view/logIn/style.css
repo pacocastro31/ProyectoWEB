@@ -12,6 +12,10 @@ body{
     background-position: center center;
 }
 
+#container{
+	filter: alpha(opacity=50);
+}
+
 #btn{
 	background-color: red;
 	border-color: red;
@@ -23,14 +27,9 @@ body{
 	border-color: rgb(200,0,0);
 }
 
-#container{
-	filter: alpha(opacity=50);
-}
-
 #btn:active{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
 }
-
 
 #btn:focus{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;

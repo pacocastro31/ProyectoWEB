@@ -1,27 +1,31 @@
-$("#loginBtn").click(function(event){
-	alert("a");
-	if(validateEmail($("#inputEmail").val()) && $("#inputPassword").val() != ""){
-		alert("a");
+$('#btn').click(function(){
+	var name = document.getElementById("inputName");
+	var email = document.getElementById("inputEmail");
+	var pass = document.getElementById("inputPassword");
+	var urlP = document.getElementById("inputPhoto");
+	if(validateEmail(email.value) && pass.value != null){
 		$.ajax({
-			type : 'POST',
-			url : 'https://themcuproject.herokuapp.com/users/login',
-			contentType:'application/json',
-			data: JSON.stringify({
-						email: $("#inputEmail").val(),
-						password: $("#inputPassword").val()
-					}),
-			success: function(data){
-				localStorage.setItem("token", data.token);
-				window.location = ("../home/index.html");
-			},
-			error:function(error){
-				alert("NO SE PUDO INICIAR SESION");
-			}
-		});
-	} else{
-		alert("Email y/o contraseña no son validos");
-	}
-	
+				type : 'POST',
+				url : 'https://themcuproject.herokuapp.com/users',
+				crossDomain: true,
+				contentType:'application/json',
+				data: JSON.stringify({
+							name: name.value,
+							email: email.value,
+							password: pass.value,
+							profilePhoto: urlP.value
+						}),
+				success: function(data){
+					window.localStorage.setItem("token", data.token);
+					window.location = ("../home/index.html");
+				},
+				error:function(error){
+					alert("NO SE PUDO INICIAR SESION");		
+				}
+			});
+		} else{
+			alert("Email y/o contraseña invalidos")
+		}
 });
 
 function validateEmail(email) {

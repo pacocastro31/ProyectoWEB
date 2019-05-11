@@ -1,0 +1,49 @@
+
+
+.navbar-light{
+	background-color: black;
+}
+.navbar-light .navbar-brand{
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+	color: white;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+	color:white;
+	font-weight: bold;
+}
+
+#containers{
+  min-width: 100%;
+}
+
+#btn{
+  background-color: red;
+  border-color: red;
+  width: 100%;
+}
+
+#btn:hover{
+  background-color: rgb(200,0,0);
+  border-color: rgb(200,0,0);
+}
+
+#btn:active{
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+}
+
+#btn:focus{
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+}
+
+input[type="text"]:focus{
+  border-color: red;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+}
+        
+ 

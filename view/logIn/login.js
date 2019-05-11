@@ -12,6 +12,10 @@ $('#btn').click(function(){
 						password: pass.value
 					}),
 			success: function(data){
+				console.log(data);
+				if(data.user.type == "admin"){
+					window.localStorage.setItem('admin', 'true');
+				}
 				window.localStorage.setItem("token", data.token);
 				window.location = ("../home/index.html");
 			},

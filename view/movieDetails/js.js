@@ -22,16 +22,15 @@ $(function(){
         <h3>Premier</h3>
         <p>${data.premiere}</p>
         <br>
-        <h3>Pics</h3>
-        <ul>`;
+        <h3>Pics</h3>`
         for (var i=0; i<data.stills.length; i++){
-            new_html+=`<li> <img src="${data.stills[i]}" class="img-fluid"></li>`;
+            new_html+=`<img src="${data.stills[i]}" class="img-fluid"> `;
         }
         new_html+=`
         </ul>
         <br>
         <h3>Trailer</h3>
-        <iframe class="img-fluid" src="${data.trailer}">
+        <iframe src="${data.trailer}" class="img-fluid">
         </iframe>
           </div>`;
       	$("#charDet").append(new_html);
@@ -60,6 +59,7 @@ $("#login").click(function(){
         //se lleva al home y se borra el token hay que hacer sign in
         //este ya esta listo creo
         localStorage.removeItem('token');
+        localStorage.removeItem('admin');
         window.location= ("../home/index.html");
     }
 
