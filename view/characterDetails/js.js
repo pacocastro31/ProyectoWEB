@@ -53,7 +53,7 @@ $(function(){
 	}).done(function(resp){
         $("#btn").click(function(event){
             var id = event.currentTarget.id;
-            window.location = ("../addCharacter/addCharacters.html?id=" + url.searchParams.get("id"));
+            window.location = ("../addEditCharacter/addCharacters.html?id=" + url.searchParams.get("id"));
         });
     });
 });

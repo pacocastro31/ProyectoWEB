@@ -41,60 +41,36 @@ $(function(){
 		dataType : "json",
 		success: function(data){
 			aliases = data.aliases
-			var new_html= `
-			<br>
-			 <div class="container" id="containers">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="" >
-                            <div class="form-group">
-                                <h5>Name</h5>
-                                <input type="text" class="form-control" id="name" value = "${data.aliases[1]}">
-                            </div>
-                            <div class="form-group">
-                                <h5>Biography</h5>
-                                <textarea type="text" class="form-control" id="biography" rows="5">${data.biography}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <h5>Actor</h5>
-                                <input type="text" class="form-control" id="actor" value = "${data.actor}">
-                            </div>
-                            <div class="form-group">
-                                <h5>Status</h5>
-                                <input type="text" class="form-control" id="status" value = "${data.status}">
-                            </div>
-                            <div class="form-group">
-                                <h5>Profile photo url</h5>
-                                <input type="text" class="form-control" id="profilephoto" value = "${data.profilePhoto}">
-                            </div>
-                            <button type="button" id="btn" class="btn btn-primary">SAVE</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-            $("#formSec").append(new_html);
+            $("#name").val(data.aliases[1]);
+            $("#biography").val(data.biography);
+            $("#actor").val(data.actor);
+            $("#status").val(data.status);
+            $("#profilephoto").val(data.profilePhoto);
+
+			var new_html= "";
+            for (var i = 0; i < data.powers.length; i++){
+                new_html+= `<input type="text" class="form-control inpu" id="inp" value = "${data.powers[i]}">`;
+            }
+            $("#inputs").append(new_html);
       	},
     	error: function(data){
     		//do something
     	}
 	}).done(function(resp){
+
+        agregaInput();
+
+        borraInput();
+
         $("#btn").click(function(event){
-        	aliases[1] = $("#name").val();
-        	let bio = $("#biography").val();
-        	let act = $("#actor").val();
-        	let sta = $("#status").val();
-        	let pp = $("#profilephoto").val();
-        	var token = localStorage.getItem('token');
+             var token = localStorage.getItem('token');
 			if (token) {
   			token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
 			}
 			var url_string = window.location.href;
 			var url = new URL(url_string);
 			var id = url.searchParams.get("id");
+            let datas = configData();
             $.ajax({
 				type : 'PATCH',
 				url : 'https://themcuproject.herokuapp.com/characters/' + id,
@@ -103,22 +79,50 @@ $(function(){
           		'Content-Type':'application/json',
           		'Authorization': 'Bearer ' + token
       			},
-				data: JSON.stringify({
-					aliases: aliases,
-					biography: bio,
-					actor: act,
-					status: sta,
-					profilePhoto: pp
-				}),
+				data: datas,
 				success: function(data){
-
 					window.location = ("../characterDetails/characterDetails.html?id=" + id)
 				},
 				error:function(error){
-				console.log("falla")
 
 				}
 			});
         });
     });
 });
+
+function agregaInput(){
+    $("#add").click(function(event){
+        let new_html = ` <input type="text" class="form-control inpu" id="inp" value = "">`;
+        $("#inputs").append(new_html);
+    });
+}
+
+function borraInput(){
+    $("#del").click(function(event){
+        $('#inputs').children().last().remove();
+    });
+}
+
+function configData(){
+
+            aliases[1] = $("#name").val();
+            let bio = $("#biography").val();
+            let act = $("#actor").val();
+            let sta = $("#status").val();
+            let pp = $("#profilephoto").val();
+            let powers = [];
+            $('.inpu').each(function(i, obj) {
+                powers[i] = obj.value
+            });
+
+            let data = JSON.stringify({
+                        aliases: aliases,
+                        biography: bio,
+                        actor: act,
+                        status: sta,
+                        profilePhoto: pp,
+                        powers: powers
+                        });
+    return data;
+}
