@@ -13,11 +13,11 @@ $.ajax({
 						new_html +=  `<div class="row container" id="images">`;
 						for(let i = 0; i < data.length; i++){
 							new_html += `
-							<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" id="${data[i]._id}">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom">
 								<a href="#">
-									<img  src="${data[i].profilePhoto}" class="img-fluid " alt="">
+									<img  src="${data[i].profilePhoto}" class="img-fluid" id="${data[i]._id}" alt="">
 			        	</a>
-								<button class="deleteBtn">Delete</button>
+								<button type="button" data-toggle="modal" name="${data[i].aliases[1]}" id="${data[i]._id}" class="deleteBtn" data-target="#exampleModalCenter">Delete</button>
 			        	<h3 class="shname">${data[i].aliases[1]}</h3>
 			        </div>
 							`;
@@ -29,9 +29,9 @@ $.ajax({
 					new_html +=  `<div class="row" id="images">`;
 					for(let i = 0; i < data.length; i++){
 		    		new_html += `
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" id="${data[i]._id}">
+						<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" >
 							<a href="#">
-		            <img  src="${data[i].profilePhoto}" class="img-fluid " alt="">
+		            <img  src="${data[i].profilePhoto}" class="img-fluid" id="${data[i]._id}" alt="">
 		          </a>
 		          <h3 class="shname">${data[i].aliases[1]}</h3>
 		        </div>
@@ -42,21 +42,50 @@ $.ajax({
 				}
     	},
     	error: function(data){
-    		//do something
+    		alert("UPS!, there is an error. Try again");
     	}
 	}).done(function(response){
-		$('.zoom').click(function(event){
+		$('.img-fluid').click(function(event){
     	var id = event.currentTarget.id;
     	window.location = ("../characterDetails/characterDetails.html?id="+id);
 		});
 
-		$('.btn').click(function(event){
+		$('#btn').click(function(event){
     	window.location = ("../addEditCharacter/addCharacters.html");
 		});
 
+		$('.deleteBtn').click(function(event){
+			$(".modal-title").text("Are you sure you want to delete " + event.currentTarget.name + '?');
+			$(".confdel").prop('id', event.currentTarget.id);
+			$(".confdel").click(function(event){
+				deleteCharacter(event.currentTarget.id);
+			});
+		});
 
 });
 
+function deleteCharacter(id){
+	 var token = localStorage.getItem('token');
+            if (token) {
+            token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
+            }
+	$.ajax({
+		url : 'https://themcuproject.herokuapp.com/characters/' + id,
+		type : "DELETE",
+		headers: {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer ' + token
+                },
+		success: function(data){
+			alert("Character was deleted successfully");
+    	},
+    	error: function(data){
+    		alert("Character was not deleted successfully");
+    	}
+		}).done(function(response){
+			location.reload();
+	});
+}
 
 window.addEventListener("load", function(event) {
     if(localStorage.getItem('token') == null){

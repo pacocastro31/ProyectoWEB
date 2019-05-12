@@ -118,3 +118,36 @@ img.zoom {
 	background-color: rgb(200,0,0);
   border-color: rgb(200,0,0);
 }
+.container .deleteBtn:focus {
+  background-color: rgb(200,0,0);
+  outline: none;
+}
+
+.confdel{
+  background-color: red;
+  border-color: red;
+  color: white;
+}
+
+.confdel:hover{
+ background-color: rgb(200,0,0);
+  border-color: rgb(200,0,0);
+  color: white;
+}
+.confdel:active{
+  background-color: red;
+  color: white;
+}
+
+.confdel:focus{
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+  background-color: rgb(200,0,0);
+  border-color: rgb(200,0,0);
+  color: white;
+}
+.confdel:target{
+  background-color: rgb(200,0,0);
+  border-color: rgb(200,0,0);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+  color: white;
+}
