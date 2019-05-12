@@ -11,7 +11,7 @@ $(function(){
        		 	$("#cont").append(newh);
    			}
 			let new_html = ""
-			new_html +=  `<div class="row" id="images">`;	
+			new_html +=  `<div class="row" id="images">`;
 			for(let i = 0; i < data.length; i++){
 				new_html += `
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom" id="${data[i]._id}">
@@ -33,6 +33,11 @@ $(function(){
     	localStorage.setItem("movie", id);
     	window.location = ("../movieDetails/movieDetails.html?id="+id);
 		});
+		$('#btn').click(function(event){
+    	var id = event.currentTarget.id;
+    	window.location = ("../editMovie/editMovie.html");
+		});
+
 	});
 });
 
