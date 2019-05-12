@@ -34,6 +34,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
 var aliases = [];
+if (id != null){
 $(function(){
 	$.ajax({
 		url : 'https://themcuproject.herokuapp.com/characters/' + id,
@@ -41,26 +42,36 @@ $(function(){
 		dataType : "json",
 		success: function(data){
 			aliases = data.aliases
-            $("#name").val(data.aliases[1]);
+            $("#name").val(data.name);
             $("#biography").val(data.biography);
             $("#actor").val(data.actor);
             $("#status").val(data.status);
             $("#profilephoto").val(data.profilePhoto);
+            $("#specie").val(data.species);
+            $("#citi").val(data.citizenship);
+            $("#gender").val(data.gender);
+            $("#age").val(data.age);
+            $("#birth").val(data.birth);
+            $("#creators").val(data.creators);
 
 			var new_html= "";
             for (var i = 0; i < data.powers.length; i++){
                 new_html+= `<input type="text" class="form-control inpu" id="inp" value = "${data.powers[i]}">`;
             }
             $("#inputs").append(new_html);
+            new_html="";
+            for (var i = 0; i < data.aliases.length; i++){
+                new_html+= `<input type="text" class="form-control inpuAlias" id="inpAlias" value = "${data.aliases[i]}">`;
+            }
+            $("#inputAlias").append(new_html);
       	},
     	error: function(data){
     		//do something
     	}
 	}).done(function(resp){
 
-        agregaInput();
-
-        borraInput();
+        configInputs();
+        configData();
 
         $("#btn").click(function(event){
              var token = localStorage.getItem('token');
@@ -84,45 +95,105 @@ $(function(){
 					window.location = ("../characterDetails/characterDetails.html?id=" + id)
 				},
 				error:function(error){
-
+                    alert("There's something wrong");
 				}
 			});
         });
     });
 });
+} else {
 
-function agregaInput(){
+    configInputs();
+    configData();
+
+    $("#btn").click(function(event){
+             var token = localStorage.getItem('token');
+            if (token) {
+            token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
+            }
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var id = url.searchParams.get("id");
+            let datas = configData();
+            $.ajax({
+                type : 'POST',
+                url : 'https://themcuproject.herokuapp.com/characters/',
+                crossDomain: true,
+                headers: {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer ' + token
+                },
+                data: datas,
+                success: function(data){
+                    window.location = ("../characters/characters.html")
+                },
+                error:function(error){
+
+                }
+            });
+        });
+
+}
+function configInputs(){
     $("#add").click(function(event){
         let new_html = ` <input type="text" class="form-control inpu" id="inp" value = "">`;
         $("#inputs").append(new_html);
     });
-}
 
-function borraInput(){
+    $("#addAlias").click(function(event){
+        let new_html = `<input type="text" class="form-control inpuAlias" id="inpAlias" value = "">`;
+        $("#inputAlias").append(new_html);
+    });
+
     $("#del").click(function(event){
         $('#inputs').children().last().remove();
     });
+
+    $("#delAlias").click(function(event){
+        $('#inputAlias').children().last().remove();
+    });
+
 }
+
+
 
 function configData(){
 
-            aliases[1] = $("#name").val();
+            let nam = $("#name").val();
             let bio = $("#biography").val();
             let act = $("#actor").val();
             let sta = $("#status").val();
             let pp = $("#profilephoto").val();
+            let specie = $("#specie").val();
+            let citizenship = $("#citi").val();
+            let gender = $("#gender").val();
+            let age = $("#age").val();
+            let birth = $("#birth").val();
+            let creators = $("#creators").val();
             let powers = [];
             $('.inpu').each(function(i, obj) {
                 powers[i] = obj.value
             });
 
+            let alias = [];
+            $('.inpuAlias').each(function(i, obj){
+                alias[i] = obj.value
+            });
+
             let data = JSON.stringify({
-                        aliases: aliases,
+                        name: nam,
+                        aliases: alias,
                         biography: bio,
                         actor: act,
                         status: sta,
                         profilePhoto: pp,
-                        powers: powers
+                        powers: powers,
+                        creators: creators,
+                        birth: birth,
+                        age: age,
+                        gender: gender,
+                        citizenship: citizenship,
+                        species: specie
                         });
     return data;
 }

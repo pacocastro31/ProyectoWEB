@@ -33,6 +33,12 @@ $.ajax({
     	var id = event.currentTarget.id;
     	window.location = ("../characterDetails/characterDetails.html?id="+id);
 		});
+
+		$('.btn').click(function(event){
+    	window.location = ("../addEditCharacter/addCharacters.html");
+		});
+
+
 });
 
 
