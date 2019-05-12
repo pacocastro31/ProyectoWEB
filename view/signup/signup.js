@@ -1,34 +1,5 @@
-// $('#btn').click(function(){
-// 	var name = document.getElementById("inputName");
-// 	var email = document.getElementById("inputEmail");
-// 	var pass = document.getElementById("inputPassword");
-// 	var urlP = document.getElementById("inputPhoto");
-// 	if(validateEmail(email.value) && pass.value != null) {
-// 		$.ajax({
-// 				method : 'POST',
-// 				dataType: 'json'
-// 				url : 'https://themcuproject.herokuapp.com/users',
-// 				crossDomain: true,
-// 				contentType:'application/json',
-// 				data: JSON.stringify({
-// 							name: name.value,
-// 							email: email.value,
-// 							password: pass.value,
-// 							profilePhoto: urlP.value
-// 						}),
-// 				success: function(data){
-// 					alert('algo');
-// 				},
-// 				error:function(error){
-// 					alert("NO SE PUDO INICIAR SESION");
-// 				}
-// 			});
-// 		} else{
-// 			alert("Email y/o contraseña invalidos.")
-// 		}
-// });
 
-$('#signup_button').on('click', function(){
+$('#btn').on('click', function(){
   // cargar los valores de password, email, name, age
 
   var email = $('#inputEmail').val()
