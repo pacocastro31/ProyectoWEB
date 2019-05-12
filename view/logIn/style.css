@@ -34,3 +34,16 @@ body{
 #btn:focus{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
 }
+
+#signdiv{
+	text-align: center;
+	margin-top: 15px;
+}
+
+a{
+	color:red;
+}
+
+a:hover{
+	color:red;
+}
