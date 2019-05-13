@@ -111,7 +111,7 @@ $("#login").click(function(){
 		localStorage.removeItem('token');
 		localStorage.removeItem('admin');
 		localStorage.removeItem('userID');
-		window.location= ("../home/index.html");
+		window.location= ("../index.html");
 		location.reload();
 	}
 
