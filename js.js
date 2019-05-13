@@ -12,7 +12,7 @@ $("#login").click(function(){
 		//se lleva a la pagina log in
 		//hay que borrar esta madre
 		window.localStorage.getItem('token');
-		window.location = ("logIn/login.html");
+		window.location = ("login/login.html");
 	}
 	else {
 		//se lleva al home y se borra el token hay que hacer sign in 
