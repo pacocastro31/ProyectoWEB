@@ -27,7 +27,7 @@ $('#btn').on('click', function(){
     success: function(data){
       alert("Usuario creado con exito");
       console.log('success: '+ data);
-      window.location = '../home/index.html'
+      window.location = '../index.html'
     },
     error: function(error_msg) {
       alert((error_msg['responseText']));
