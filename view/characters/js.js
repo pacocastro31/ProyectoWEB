@@ -57,7 +57,7 @@ $.ajax({
 		$('.deleteBtn').click(function(event){
 			$(".modal-title").text("Are you sure you want to delete " + event.currentTarget.name + '?');
 			$(".confdel").prop('id', event.currentTarget.id);
-			$(".confdel").click(function(event){
+			$(".confdel").click(function(event) {
 				deleteCharacter(event.currentTarget.id);
 			});
 		});
