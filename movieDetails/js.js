@@ -62,7 +62,7 @@ window.addEventListener("load", function(event) {
 
 $("#login").click(function(){
     if(localStorage.getItem('token') == null){
-        window.location = ("../login.html");
+        window.location = ("../logIn/login.html");
     }
     else {
         //se lleva al home y se borra el token hay que hacer sign in
