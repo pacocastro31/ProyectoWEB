@@ -15,7 +15,7 @@ $(function(){
 						for(let i = 0; i < data.length; i++){
 							new_html += `
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom">
-								<a /*href="../movieDetails/movieDetails.html*/">
+								<a href="#">
 			        		<img  src="${data[i].poster}" class="img-fluid" id="${data[i]._id}"  alt="">
 			        	</a>
 								<button type="button" data-toggle="modal" name="${data[i].title}" id="${data[i]._id}" class="deleteBtn" data-target="#exampleModalCenter">Delete</button>
@@ -31,7 +31,7 @@ $(function(){
 					for(let i = 0; i < data.length; i++){
 						new_html += `
 						<div class="col-lg-3 col-md-4 col-xs-6 thumb zoom">
-							<a /*href="../movieDetails/movieDetails.html*/">
+							<a href="#">
 		          	<img  src="${data[i].poster}" class="img-fluid" id="${data[i]._id}"  alt="">
 		          </a>
 		         	<h3 class="shname">${data[i].title}</h3>
