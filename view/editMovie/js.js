@@ -25,6 +25,7 @@ $("#login").click(function(){
 		//este ya esta listo creo
 		localStorage.removeItem('token');
 		localStorage.removeItem('admin');
+    localStorage.removeItem('userID');
 		window.location = ("../home/index.html");
 	}
 

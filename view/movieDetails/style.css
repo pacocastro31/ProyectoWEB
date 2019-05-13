@@ -55,3 +55,62 @@ div div div li{
 #btn:focus{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
 }
+.thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
+
+#titulo{
+	text-align: left;
+
+}
+
+#cell{
+	margin: 10px;
+}
+
+#sendComm{
+	background-color: red;
+	border-color: red;
+}
+
+#sendComm:hover{
+	background-color: rgb(200,0,0);
+	border-color: rgb(200,0,0);
+}
+
+#sendComm:active{
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+}
+
+#sendComm:focus{
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red;
+}
+
+#like{
+	margin-top: 10px;
+}

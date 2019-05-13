@@ -17,7 +17,8 @@ $('#btn').click(function(){
 					window.localStorage.setItem('admin', 'true');
 				}
 				window.localStorage.setItem("token", data.token);
-				window.location = ("../home/index.html");
+				window.localStorage.setItem("userID", data.user.id);
+				window.location = ("../index.html");
 			},
 			error:function(error){
 				alert("Email y/o contraseña incorrectos. Verificalos pls");		

@@ -12,13 +12,14 @@ $("#login").click(function(){
 		//se lleva a la pagina log in
 		//hay que borrar esta madre
 		window.localStorage.getItem('token');
-		window.location = ("../login/login.html");
+		window.location = ("login/login.html");
 	}
 	else {
 		//se lleva al home y se borra el token hay que hacer sign in 
 		//este ya esta listo creo
 		localStorage.removeItem('token');
 		localStorage.removeItem('admin');
+		localStorage.removeItem('userID');
 		location.reload();
 	}
 	
