@@ -26,18 +26,12 @@ $(function(){
         <h3>Premier</h3>
         <p>${data.premiere}</p>
         <br>
-        <h3>Pics</h3>`
-        for (var i=0; i<data.stills.length; i++){
-            new_html+=`<img src="${data.stills[i]}" class="img-fluid"> `;
-        }
-        new_html+=`
-        </ul>
-        <br>
-        <h3>Trailer</h3>
-        <iframe src="${data.trailer}" class="img-fluid">
-        </iframe>
           </div>`;
       	$("#charDet").append(new_html);
+        new_html = `<div>
+          <iframe width="80%" height="600px" src="${data.trailer}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>`;
+        $("#trailerSection").append(new_html);
       	},
     	error: function(data){
     	}
